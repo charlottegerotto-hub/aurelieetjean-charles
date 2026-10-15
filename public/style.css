@@ -426,6 +426,8 @@ section, .hero, .pied { position: relative; }
 .petit-coeur { width: .9rem; }
 .pied__monogramme { color: var(--sauge); font-size: var(--t-accent); letter-spacing: .1em; margin-top: .4rem; text-shadow: .04em .03em 0 var(--ombre); }
 .signature { margin-top: 2.2rem; font-size: .7rem; letter-spacing: .06em; color: #b5ad9c; }
+.signature a { color: inherit; text-decoration: underline; text-decoration-color: rgba(181, 173, 156, .5); text-underline-offset: 2px; transition: color .25s; }
+.signature a:hover { color: var(--rose); }
 
 /* toast « copié » */
 .toast {

@@ -18,6 +18,18 @@
 </head>
 <body>
 
+<!-- ============ Menu ============ -->
+<nav class="menu" id="menu" aria-label="Sommaire">
+  <a class="menu__logo" href="#haut" aria-label="Haut de page">A <span>&amp;</span> JC</a>
+  <button class="menu__bouton" id="menu-bouton" type="button" aria-expanded="false" aria-controls="menu-liens"><span class="menu__traits" aria-hidden="true"></span>Menu</button>
+  <ul class="menu__liens" id="menu-liens">
+    <li><a href="#programme">Programme</a></li>
+    <li><a href="#brunch">Brunch</a></li>
+    <li><a href="#logements">Logements</a></li>
+    <li><a href="#reponse" class="menu__repondre">Répondre</a></li>
+  </ul>
+</nav>
+
 <!-- ============ Page 1 du faire-part ============ -->
 <header class="hero" id="haut">
   <canvas class="petales" id="petales" aria-hidden="true"></canvas>
@@ -55,8 +67,9 @@
 <section class="programme" id="programme">
   <img class="bouquet bouquet--miroir" src="/img/fleurs-haut.webp" alt="" width="1024" height="560" loading="lazy">
   <div class="enveloppe">
-    <h2 class="titre-noms" data-revele>Le programme</h2>
-    <p class="chapeau" data-revele>Samedi 17 juin 2028</p>
+    <h2 class="titre-script" data-revele>Le programme</h2>
+    <p class="capitales capitales--rose" data-revele>Samedi 17 juin</p>
+    <img class="filet" src="/img/filet-coeur.webp" alt="" width="356" height="39" loading="lazy">
 
     <ol class="etapes">
       <li class="etape" data-revele>
@@ -69,8 +82,8 @@
         </div>
         <img class="etape__photo" src="/img/eglise.webp" alt="Façade de l'église Saint-Jean de Pézenas" width="728" height="1024" loading="lazy">
       </li>
-
-      <li class="etape" data-revele>
+      <li class="lien-etapes" aria-hidden="true"><span>♥</span></li>
+      <li class="etape etape--inverse" data-revele>
         <img class="etape__ill" src="/img/ill-soiree.webp" alt="" width="600" height="512" loading="lazy">
         <div class="etape__texte">
           <h3 class="heure">18h30 <span class="tiret">-</span> Vin d'honneur et soirée</h3>
@@ -91,6 +104,7 @@
   <img class="brunch__bouquet" src="/img/fleurs-brunch.webp" alt="" width="1536" height="857" loading="lazy">
   <div class="enveloppe">
     <h2 class="brunch__titre" data-revele>Brunch</h2>
+    <p class="capitales" data-revele>Dimanche 18 juin · 9h00</p>
     <img class="brunch__ill" src="/img/ill-brunch.webp" alt="Café, œuf au plat et croissant" width="500" height="499" loading="lazy" data-revele>
     <p data-revele>Le dimanche matin, nous nous retrouverons pour un brunch convivial à 9h00.</p>
     <p data-revele>Merci de nous confirmer votre présence également.</p>
@@ -149,6 +163,7 @@
 
 <!-- ============ Photo ============ -->
 <section class="photo-course">
+  <p class="photo-course__legende" data-revele><span class="script">Main dans la main</span><span class="capitales">jusqu'au 17 juin 2028</span></p>
   <img src="/img/course.jpg" alt="Aurélie et Jean-Charles courent main dans la main vers la mer" width="1000" height="1333" loading="lazy">
 </section>
 
@@ -158,8 +173,11 @@
   <img class="reponse__fleur reponse__fleur--d" src="/img/fleur-hibiscus.webp" alt="" width="500" height="402" loading="lazy">
   <div class="enveloppe enveloppe--etroite">
     <h2 class="titre-script" data-revele>Votre réponse</h2>
+    <p class="capitales capitales--rose" data-revele>Avant le 17 octobre 2027</p>
+    <img class="filet" src="/img/filet-coeur.webp" alt="" width="356" height="39" loading="lazy">
     <p class="chapeau" data-revele>Afin de préparer au mieux cette journée, merci de nous faire part de votre réponse et du nombre d'enfants présents avant le <strong>17 octobre 2027</strong>.</p>
 
+    <div class="carte">
     <form id="formulaire" class="formulaire" novalidate>
       <div class="champ">
         <label for="noms">Vos prénoms et noms <span class="requis" aria-hidden="true">*</span></label>
@@ -231,6 +249,7 @@
       <p class="titre-script">Merci !</p>
       <p id="merci-texte">Votre réponse est bien arrivée.</p>
       <button class="lien" type="button" id="modifier">Envoyer une autre réponse</button>
+    </div>
     </div>
 
     <p class="sms">Vous préférez un SMS ? Écrivez-nous au <span class="numero">07 89 02 06 69</span>.</p>

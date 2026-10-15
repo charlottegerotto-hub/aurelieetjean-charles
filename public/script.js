@@ -20,6 +20,33 @@
   tic();
   setInterval(tic, 30000);
 
+  // ---------- menu ----------
+  var menu = document.getElementById("menu");
+  var menuBouton = document.getElementById("menu-bouton");
+  function fermeMenu() { menu.classList.remove("ouvert"); menuBouton.setAttribute("aria-expanded", "false"); }
+  menuBouton.addEventListener("click", function () {
+    var ouvert = menu.classList.toggle("ouvert");
+    menuBouton.setAttribute("aria-expanded", ouvert ? "true" : "false");
+  });
+  menu.querySelectorAll(".menu__liens a").forEach(function (a) { a.addEventListener("click", fermeMenu); });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") fermeMenu(); });
+  document.addEventListener("click", function (e) { if (!menu.contains(e.target)) fermeMenu(); });
+  function surDefilement() { menu.classList.toggle("defile", window.scrollY > 40); }
+  window.addEventListener("scroll", surDefilement, { passive: true });
+  surDefilement();
+  // souligne la partie en cours de lecture
+  if ("IntersectionObserver" in window) {
+    var liens = {};
+    menu.querySelectorAll(".menu__liens a").forEach(function (a) { liens[a.getAttribute("href").slice(1)] = a; });
+    var suivi = new IntersectionObserver(function (entrees) {
+      entrees.forEach(function (en) {
+        var a = liens[en.target.id];
+        if (a) a.classList.toggle("actif", en.isIntersecting);
+      });
+    }, { rootMargin: "-45% 0px -50% 0px" });
+    Object.keys(liens).forEach(function (id) { var el = document.getElementById(id); if (el) suivi.observe(el); });
+  }
+
   // ---------- copier un numéro de téléphone ----------
   var toast = document.createElement("div");
   toast.className = "toast";

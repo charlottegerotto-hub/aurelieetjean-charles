@@ -71,7 +71,7 @@
 
   // ---------- formulaire de réponse ----------
   // Les réponses partent par e-mail via FormSubmit (formsubmit.co), sans serveur à nous.
-  var ENVOI = "https://formsubmit.co/ajax/aurelie.haton@hotmail.com";
+  var DESTINATAIRE = "aurelie.haton@hotmail.com";
   var form = document.getElementById("formulaire");
   var bloc = document.getElementById("si-present");
   var erreur = document.getElementById("erreur");
@@ -93,13 +93,45 @@
     if (e.target.classList.contains("invalide")) e.target.classList.remove("invalide");
   });
 
+  var erreurTexte = document.getElementById("erreur-texte");
+  var secours = document.getElementById("secours");
+
   function montreErreur(texte, champ) {
-    erreur.textContent = texte;
+    erreurTexte.textContent = texte;
+    secours.hidden = true;
     erreur.hidden = false;
     if (champ) {
       champ.classList.add(champ.tagName === "FIELDSET" ? "invalide-groupe" : "invalide");
       champ.scrollIntoView({ behavior: "smooth", block: "center" });
     }
+  }
+
+  // en dernier recours : SMS ou e-mail déjà rédigés avec la réponse
+  function proposeSecours(courriel) {
+    var lignes = [];
+    Object.keys(courriel).forEach(function (k) { if (k.charAt(0) !== "_" && courriel[k] !== "-") lignes.push(k + " : " + courriel[k]); });
+    var corps = "Réponse au mariage d'Aurélie et Jean-Charles\n" + lignes.join("\n");
+    document.getElementById("secours-sms").href = "sms:0789020669?&body=" + encodeURIComponent(corps);
+    document.getElementById("secours-mail").href = "mailto:aurelie.haton@hotmail.com?subject=" +
+      encodeURIComponent(courriel._subject) + "&body=" + encodeURIComponent(corps);
+    secours.hidden = false;
+  }
+
+  // envoi classique (le navigateur va sur FormSubmit puis revient ici) : marche même si
+  // l'envoi en arrière-plan est bloqué, et affiche la page d'activation au tout premier envoi
+  function envoiClassique(courriel, presence) {
+    var f = document.createElement("form");
+    f.method = "post";
+    f.action = "https://formsubmit.co/" + DESTINATAIRE;
+    f.hidden = true;
+    var champs = Object.assign({}, courriel, { _next: location.origin + location.pathname + "?merci=" + presence + "#reponse" });
+    Object.keys(champs).forEach(function (k) {
+      var i = document.createElement("input");
+      i.type = "hidden"; i.name = k; i.value = champs[k];
+      f.appendChild(i);
+    });
+    document.body.appendChild(f);
+    f.submit();
   }
 
   form.addEventListener("submit", function (e) {
@@ -131,11 +163,11 @@
       donnees.adultes = "0"; donnees.enfants = "0"; donnees.brunch = ""; donnees.logement = ""; donnees.regime = "";
     }
 
+    // un robot a rempli le champ invisible : on fait semblant d'avoir envoyé
+    if (donnees.site) return remercie(donnees.presence);
+
     bouton.disabled = true;
     bouton.textContent = "Envoi en cours…";
-
-    // un robot a rempli le champ invisible : on fait semblant d'avoir envoyé
-    if (donnees.site) return remercie(donnees);
 
     var oui = donnees.presence === "oui";
     var logements = { domaine: "Au domaine", ailleurs: "Ailleurs", indecis: "Ne sait pas encore" };
@@ -154,33 +186,59 @@
       "Message": donnees.message || "-"
     };
 
-    fetch(ENVOI, {
+    var controle = window.AbortController ? new AbortController() : null;
+    var delai = setTimeout(function () { if (controle) controle.abort(); }, 15000);
+    fetch("https://formsubmit.co/ajax/" + DESTINATAIRE, {
       method: "POST",
       headers: { "Content-Type": "application/json", "Accept": "application/json" },
-      body: JSON.stringify(courriel)
+      body: JSON.stringify(courriel),
+      signal: controle ? controle.signal : undefined
     })
-      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { ok: r.ok, j: j }; }); })
-      .then(function (res) {
-        if (!res.ok || String(res.j.success) !== "true") throw new Error("");
-        remercie(donnees);
+      .then(function (r) { return r.json().catch(function () { return {}; }); })
+      .then(function (j) {
+        clearTimeout(delai);
+        if (String(j.success) === "true") return remercie(donnees.presence);
+        // refus de FormSubmit (formulaire pas encore activé, etc.) : on passe à l'envoi classique,
+        // qui affiche la raison et déclenche l'e-mail d'activation
+        envoiClassique(courriel, donnees.presence);
       })
       .catch(function () {
-        montreErreur("L'envoi n'a pas abouti. Vérifiez votre connexion et réessayez, ou envoyez-nous un SMS au 07 89 02 06 69.");
-      })
-      .finally(function () {
-        bouton.disabled = false;
-        bouton.textContent = "Envoyer ma réponse";
+        clearTimeout(delai);
+        // envoi en arrière-plan impossible (bloqueur, réseau…) : envoi classique
+        try { envoiClassique(courriel, donnees.presence); }
+        catch (err) {
+          bouton.disabled = false;
+          bouton.textContent = "Envoyer ma réponse";
+          montreErreur("L'envoi n'a pas abouti. Réessayez dans un instant, ou envoyez votre réponse directement :");
+          proposeSecours(courriel);
+        }
       });
   });
 
-  function remercie(donnees) {
+  function remercie(presence) {
     form.hidden = true;
-    merciTexte.textContent = donnees.presence === "oui"
+    merciTexte.textContent = presence === "oui"
       ? "Votre réponse est bien arrivée. Nous avons hâte de vous retrouver le 17 juin 2028 !"
       : "Votre réponse est bien arrivée. Vous nous manquerez, nous penserons à vous.";
     merci.hidden = false;
-    merci.focus();
-    if (donnees.presence === "oui") fete(window.innerWidth / 2, window.innerHeight * 0.45, 70);
+    merci.focus({ preventScroll: true });
+    if (presence === "oui") fete(window.innerWidth / 2, window.innerHeight * 0.45, 70);
+  }
+
+  // retour arrière depuis FormSubmit : le bouton ne doit pas rester bloqué
+  window.addEventListener("pageshow", function () {
+    bouton.disabled = false;
+    bouton.textContent = "Envoyer ma réponse";
+  });
+
+  // retour de FormSubmit après un envoi classique
+  var retour = /[?&]merci=(oui|non)/.exec(location.search);
+  if (retour) {
+    history.replaceState(null, "", location.pathname + "#reponse");
+    window.addEventListener("load", function () {
+      document.getElementById("reponse").scrollIntoView();
+      remercie(retour[1]);
+    });
   }
 
   // ---------- effets ----------

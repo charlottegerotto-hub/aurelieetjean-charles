@@ -23,6 +23,7 @@
   <a class="menu__logo" href="#haut" aria-label="Haut de page">A <span>&amp;</span> JC</a>
   <button class="menu__bouton" id="menu-bouton" type="button" aria-expanded="false" aria-controls="menu-liens"><span class="menu__traits" aria-hidden="true"></span>Menu</button>
   <ul class="menu__liens" id="menu-liens">
+    <li><a href="#essentiel">L'essentiel</a></li>
     <li><a href="#programme">Programme</a></li>
     <li><a href="#brunch">Brunch</a></li>
     <li><a href="#logements">Logements</a></li>
@@ -52,6 +53,55 @@
     <a class="bouton" href="#reponse">Répondre à l'invitation</a>
   </div>
 </header>
+
+<!-- ============ L'essentiel, en un coup d'œil ============ -->
+<section class="papier essentiel" id="essentiel">
+  <div class="enveloppe">
+    <h2 class="titre-script" data-revele>L'essentiel</h2>
+    <p class="capitales capitales--rose" data-revele>En un coup d'œil</p>
+    <img class="filet" src="/img/filet-coeur.webp" alt="" width="356" height="39" loading="lazy">
+
+    <ul class="tuiles">
+      <li class="tuile" data-revele>
+        <img class="tuile__ill" src="/img/ill-eglise.webp" alt="" width="500" height="410" loading="lazy">
+        <div class="tuile__texte">
+          <p class="tuile__quand">Samedi 17 juin · 15h45</p>
+          <h3>Cérémonie</h3>
+          <p class="tuile__ou">Église Saint-Jean, Pézenas</p>
+          <a class="lien" href="https://www.google.com/maps/search/?api=1&amp;query=%C3%89glise+Saint-Jean%2C+2+Rue+des+Chevaliers+Saint-Jean%2C+34120+P%C3%A9zenas" target="_blank" rel="noopener">Itinéraire</a>
+        </div>
+      </li>
+      <li class="tuile" data-revele>
+        <img class="tuile__ill" src="/img/ill-soiree.webp" alt="" width="600" height="512" loading="lazy">
+        <div class="tuile__texte">
+          <p class="tuile__quand">Samedi 17 juin · 18h30</p>
+          <h3>Vin d'honneur et soirée</h3>
+          <p class="tuile__ou">Domaine de la Marceille Basse, Servian</p>
+          <a class="lien" href="https://www.google.com/maps/search/?api=1&amp;query=Domaine+de+la+Marceille+Basse%2C+34290+Servian" target="_blank" rel="noopener">Itinéraire</a>
+        </div>
+      </li>
+      <li class="tuile" data-revele>
+        <img class="tuile__ill" src="/img/ill-brunch.webp" alt="" width="500" height="499" loading="lazy">
+        <div class="tuile__texte">
+          <p class="tuile__quand">Dimanche 18 juin · 9h00</p>
+          <h3>Brunch</h3>
+          <p class="tuile__ou">Pour prolonger la fête ensemble</p>
+          <a class="lien" href="#brunch">En savoir plus</a>
+        </div>
+      </li>
+      <li class="tuile tuile--rsvp" data-revele>
+        <span class="tuile__ill tuile__ill--coeur" aria-hidden="true">♥</span>
+        <div class="tuile__texte">
+          <p class="tuile__quand">Avant le 17 octobre 2027</p>
+          <h3>Votre réponse</h3>
+          <p class="tuile__ou">Présence, nombre d'enfants, brunch</p>
+          <a class="bouton bouton--petit" href="#reponse">Répondre</a>
+        </div>
+      </li>
+    </ul>
+    <p class="essentiel__plus" data-revele><span>Logements sur place, de 100 à 120 € la nuit</span> <a class="lien" href="#logements">Voir les logements</a></p>
+  </div>
+</section>
 
 <!-- ============ Save the date ============ -->
 <section class="photo-std">
@@ -178,7 +228,7 @@
     <p class="chapeau" data-revele>Afin de préparer au mieux cette journée, merci de nous faire part de votre réponse et du nombre d'enfants présents avant le <strong>17 octobre 2027</strong>.</p>
 
     <div class="carte">
-    <form id="formulaire" class="formulaire" novalidate>
+    <form id="formulaire" class="formulaire" method="post" action="https://formsubmit.co/aurelie.haton@hotmail.com" novalidate>
       <div class="champ">
         <label for="noms">Vos prénoms et noms <span class="requis" aria-hidden="true">*</span></label>
         <input id="noms" name="noms" type="text" autocomplete="name" required placeholder="Ex. : Marie et Paul Dupont">
@@ -240,7 +290,16 @@
       <!-- piège à robots : les humains ne voient pas ce champ -->
       <div class="piege" aria-hidden="true"><label for="site">Site</label><input id="site" name="site" type="text" tabindex="-1" autocomplete="off"></div>
 
-      <p class="erreur" id="erreur" role="alert" hidden></p>
+      <div class="erreur" id="erreur" role="alert" hidden>
+        <p id="erreur-texte"></p>
+        <div class="secours" id="secours" hidden>
+          <p>Vous pouvez aussi envoyer votre réponse, déjà rédigée :</p>
+          <div class="secours__boutons">
+            <a class="bouton bouton--petit" id="secours-sms" href="sms:0789020669">Par SMS</a>
+            <a class="bouton bouton--petit" id="secours-mail" href="mailto:aurelie.haton@hotmail.com">Par e-mail</a>
+          </div>
+        </div>
+      </div>
       <button class="bouton bouton--plein" type="submit" id="envoyer">Envoyer ma réponse</button>
       <p class="legende-requis"><span class="requis">*</span> champs obligatoires</p>
     </form>

@@ -71,7 +71,7 @@
 
   // ---------- formulaire de réponse ----------
   // Les réponses partent par e-mail via FormSubmit (formsubmit.co), sans serveur à nous.
-  var DESTINATAIRE = "aurelie.haton@hotmail.com";
+  var DESTINATAIRE = "benjamingerotto@gmail.com"; // TEST temporaire, remettre aurelie.haton@hotmail.com
   var form = document.getElementById("formulaire");
   var bloc = document.getElementById("si-present");
   var erreur = document.getElementById("erreur");

@@ -12,7 +12,7 @@ Site statique (dossier `public/`), aucun serveur.
 
 ## Réponses des invités
 
-Chaque réponse du formulaire est envoyée par e-mail à aurelie.haton@hotmail.com,
+Chaque réponse du formulaire (noms, présence, adultes, nombre d'enfants présents — obligatoire —, brunch, logement…) est envoyée par e-mail à aurelie.haton@hotmail.com,
 via le service gratuit FormSubmit (formsubmit.co). Adresse réglée dans `public/script.js` (`ENVOI`).
 
 **Activation, une seule fois** : après la mise en ligne, envoyer une réponse de test depuis le site.

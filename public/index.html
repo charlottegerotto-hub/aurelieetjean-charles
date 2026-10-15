@@ -9,7 +9,7 @@
 <meta property="og:description" content="Nous sommes heureux de vous convier à notre mariage. Merci de nous répondre avant le 17 octobre 2027.">
 <meta property="og:image" content="/img/bisou.jpg">
 <meta property="og:type" content="website">
-<meta name="theme-color" content="#fefdfd">
+<meta name="theme-color" content="#fefdfe">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -18,17 +18,20 @@
 </head>
 <body>
 
-<!-- ============ Ouverture ============ -->
-<header class="hero">
-  <img class="hero__fleurs" src="/img/fleurs-haut.webp" alt="" width="1024" height="560" fetchpriority="high">
+<!-- ============ Page 1 du faire-part ============ -->
+<header class="hero" id="haut">
+  <canvas class="petales" id="petales" aria-hidden="true"></canvas>
+  <img class="bouquet" src="/img/fleurs-haut.webp" alt="" width="1024" height="560" fetchpriority="high">
   <div class="hero__contenu">
-    <div class="monogramme" aria-hidden="true">AJC</div>
-    <h1 class="noms">Aurélie <span class="esperluette">&amp;</span> Jean-Charles</h1>
+    <div class="monogramme" id="monogramme" title="♥">
+      <span class="monogramme__lettres" aria-hidden="true">AJC</span>
+      <h1 class="noms">Aurelie <span class="esperluette">&amp;</span> Jean-Charles</h1>
+    </div>
     <p class="invitation">Nous sommes heureux de vous convier à notre mariage le</p>
-    <p class="grande-date"><span>17</span><span class="sep">/</span><span>06</span><span class="sep">/</span><span>2028</span></p>
-    <p class="sous-date">Samedi 17 juin 2028 · Pézenas &amp; Servian, Hérault</p>
+    <p class="grande-date">17/06/2028</p>
+    <p class="sous-date">Samedi 17 juin 2028 · Pézenas &amp; Servian</p>
 
-    <div class="compte" id="compte" aria-live="off">
+    <div class="compte" aria-label="Temps restant avant la cérémonie">
       <div><strong id="cj">–</strong><span>jours</span></div>
       <div><strong id="ch">–</strong><span>heures</span></div>
       <div><strong id="cm">–</strong><span>minutes</span></div>
@@ -40,38 +43,37 @@
 
 <!-- ============ Save the date ============ -->
 <section class="photo-std">
-  <figure class="cadre">
+  <figure class="cadre" data-revele>
     <img src="/img/bisou.jpg" alt="Aurélie et Jean-Charles s'embrassent sur la plage" width="876" height="916" loading="lazy">
   </figure>
-  <p class="script script--grand">Save the Date</p>
-  <p class="capitales">Aurélie &amp;<br> Jean-Charles</p>
-  <p class="capitales capitales--petit">17 juin 2028</p>
+  <p class="script script--std" data-revele>Save the Date</p>
+  <p class="capitales" data-revele>Aurelie &amp;<br> Jean-Charles</p>
+  <p class="capitales capitales--petit" data-revele>17 juin 2028</p>
 </section>
 
-<!-- ============ Programme ============ -->
+<!-- ============ Page 2 : le programme ============ -->
 <section class="programme" id="programme">
+  <img class="bouquet bouquet--miroir" src="/img/fleurs-haut.webp" alt="" width="1024" height="560" loading="lazy">
   <div class="enveloppe">
-    <h2 class="titre"><span class="script">Le</span> programme</h2>
-    <p class="chapeau">Samedi 17 juin 2028</p>
+    <h2 class="titre-noms" data-revele>Le programme</h2>
+    <p class="chapeau" data-revele>Samedi 17 juin 2028</p>
 
     <ol class="etapes">
-      <li class="etape">
+      <li class="etape" data-revele>
         <img class="etape__ill" src="/img/ill-eglise.webp" alt="" width="500" height="410" loading="lazy">
         <div class="etape__texte">
-          <p class="heure">15h45</p>
-          <h3>Cérémonie religieuse</h3>
-          <p class="lieu">Église Saint-Jean</p>
-          <p class="adresse">2 rue des Chevaliers Saint-Jean<br>34120 Pézenas</p>
+          <h3 class="heure">15h45 <span class="tiret">-</span> Église Saint-Jean</h3>
+          <p class="lieu">Cérémonie religieuse</p>
+          <p class="adresse">2 rue des Chevaliers Saint-Jean, 34120 Pézenas</p>
           <a class="lien" href="https://www.google.com/maps/search/?api=1&amp;query=%C3%89glise+Saint-Jean%2C+2+Rue+des+Chevaliers+Saint-Jean%2C+34120+P%C3%A9zenas" target="_blank" rel="noopener">Itinéraire</a>
         </div>
         <img class="etape__photo" src="/img/eglise.webp" alt="Façade de l'église Saint-Jean de Pézenas" width="728" height="1024" loading="lazy">
       </li>
 
-      <li class="etape">
+      <li class="etape" data-revele>
         <img class="etape__ill" src="/img/ill-soiree.webp" alt="" width="600" height="512" loading="lazy">
         <div class="etape__texte">
-          <p class="heure">18h30</p>
-          <h3>Vin d'honneur et soirée</h3>
+          <h3 class="heure">18h30 <span class="tiret">-</span> Vin d'honneur et soirée</h3>
           <p class="lieu">Domaine de la Marceille Basse</p>
           <p class="adresse">34290 Servian</p>
           <a class="lien" href="https://www.google.com/maps/search/?api=1&amp;query=Domaine+de+la+Marceille+Basse%2C+34290+Servian" target="_blank" rel="noopener">Itinéraire</a>
@@ -79,62 +81,70 @@
         <img class="etape__photo etape__photo--large" src="/img/domaine.webp" alt="Le Domaine de la Marceille Basse vu du ciel, bâtisses en pierre et jardin" width="1024" height="576" loading="lazy">
       </li>
     </ol>
-    <p class="trajet">Comptez une vingtaine de minutes de route entre l'église et le domaine.</p>
+    <p class="trajet" data-revele>Comptez une vingtaine de minutes de route entre l'église et le domaine.</p>
     <p class="centre"><a class="lien" href="/mariage-aurelie-jean-charles.ics">Ajouter à mon agenda</a></p>
   </div>
 </section>
 
-<!-- ============ Brunch ============ -->
+<!-- ============ Page 3 : le brunch ============ -->
 <section class="brunch" id="brunch">
-  <img class="brunch__fleur" src="/img/roses.webp" alt="" width="600" height="459" loading="lazy">
+  <img class="brunch__bouquet" src="/img/fleurs-brunch.webp" alt="" width="1536" height="857" loading="lazy">
   <div class="enveloppe">
-    <h2 class="script script--brunch">Brunch</h2>
-    <img class="brunch__ill" src="/img/ill-brunch.webp" alt="Café, œuf au plat et croissant" width="500" height="499" loading="lazy">
-    <p>Le dimanche 18 juin au matin, nous nous retrouverons pour un brunch convivial à <strong>9h00</strong>.</p>
-    <p>Merci de nous confirmer votre présence également.</p>
+    <h2 class="brunch__titre" data-revele>Brunch</h2>
+    <img class="brunch__ill" src="/img/ill-brunch.webp" alt="Café, œuf au plat et croissant" width="500" height="499" loading="lazy" data-revele>
+    <p data-revele>Le dimanche matin, nous nous retrouverons pour un brunch convivial à 9h00.</p>
+    <p data-revele>Merci de nous confirmer votre présence également.</p>
   </div>
 </section>
 
-<!-- ============ Logements ============ -->
-<section class="logements" id="logements">
-  <img class="logements__fleur" src="/img/branche-orange.webp" alt="" width="500" height="496" loading="lazy">
+<!-- ============ Page 4 : les logements ============ -->
+<section class="papier logements" id="logements">
+  <img class="coin coin--haut" src="/img/roses.webp" alt="" width="600" height="459" loading="lazy">
   <div class="enveloppe">
-    <h2 class="titre-script">Les logements</h2>
-    <p class="capitales capitales--rose">Sur place</p>
-    <p class="chapeau chapeau--caps">Pour profiter pleinement du week-end de mariage</p>
-    <span class="coeur" aria-hidden="true">♥</span>
+    <h2 class="titre-script" data-revele>Les logements</h2>
+    <p class="capitales capitales--rose" data-revele>Sur place</p>
+    <p class="chapeau-caps" data-revele>Pour profiter pleinement<br> du week-end de mariage</p>
+    <img class="filet" src="/img/filet-coeur.webp" alt="" width="356" height="39" loading="lazy">
 
     <ul class="offres">
-      <li class="offre">
-        <svg viewBox="0 0 48 32" aria-hidden="true"><path d="M3 30V6m42 24V16M3 22h42M3 16h42v6M8 16v-5a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v5m4 0v-5a3 3 0 0 1 3-3h8a3 3 0 0 1 3 3v5"/></svg>
+      <li class="offre" data-revele>
+        <img class="offre__icone" src="/img/ic-lit.webp" alt="" width="119" height="97" loading="lazy">
         <h3>11 chambres</h3>
+        <img class="arabesque" src="/img/arabesque.webp" alt="" width="119" height="39" loading="lazy">
         <p class="prix">120 €</p>
-        <p class="detail">la chambre<br>+ taxe de séjour</p>
+        <p class="detail">La chambre<br>plus taxe de séjour</p>
+        <img class="brin" src="/img/brin.webp" alt="" width="80" height="77" loading="lazy">
       </li>
-      <li class="offre">
-        <svg viewBox="0 0 48 32" aria-hidden="true"><path d="M6 31V2m36 29V2M6 8h36M6 20h36M6 26h36M6 14h36M18 8v6m12-6v6m-12 6v6m12-6v6"/></svg>
-        <h3>Dortoir de 4 lits</h3>
+      <li class="offre" data-revele>
+        <img class="offre__icone" src="/img/ic-dortoir.webp" alt="" width="120" height="97" loading="lazy">
+        <h3>Dortoir<br>de 4 lits</h3>
+        <img class="arabesque" src="/img/arabesque.webp" alt="" width="119" height="39" loading="lazy">
         <p class="prix">100 €</p>
-        <p class="detail">le lit<br>+ taxe de séjour</p>
+        <p class="detail">Le lit<br>plus taxe de séjour</p>
+        <img class="brin" src="/img/brin.webp" alt="" width="80" height="77" loading="lazy">
       </li>
-      <li class="offre">
-        <svg viewBox="0 0 48 32" aria-hidden="true"><path d="M4 31h40M7 31V15L24 3l17 12v16M7 15h34M13 31v-8h6v8m10-8h6v5h-6zm-16-3h22"/></svg>
+      <li class="offre" data-revele>
+        <img class="offre__icone" src="/img/ic-villa.webp" alt="" width="159" height="116" loading="lazy">
         <h3>Villa + loft<br>5 chambres</h3>
+        <img class="arabesque" src="/img/arabesque.webp" alt="" width="119" height="39" loading="lazy">
         <p class="prix">120 €</p>
-        <p class="detail">la chambre<br>+ taxe de séjour</p>
+        <p class="detail">La chambre<br>plus taxe de séjour</p>
+        <img class="brin" src="/img/brin.webp" alt="" width="80" height="77" loading="lazy">
       </li>
     </ul>
 
-    <p class="note">Tarif pour la nuit du mariage uniquement. Au-delà, le tarif de la saison est appliqué.</p>
-    <p class="reservation">Réservation auprès du domaine<br><span class="numero" data-copie="0619125986">06 19 12 59 86</span></p>
+    <p class="note" data-revele>Tarif pour la nuit du mariage uniquement. Au-delà, le tarif de la saison est appliqué.</p>
+    <p class="reservation" data-revele>Réservation au <span class="numero">06 19 12 59 86</span></p>
 
-    <p class="titre-script titre-script--petit">Et sinon…</p>
-    <p>Vous trouverez également des hôtels à Pézenas ou à Béziers.</p>
-    <div class="hotels">
-      <a href="https://www.google.com/maps/search/h%C3%B4tels+P%C3%A9zenas" target="_blank" rel="noopener"><span class="epingle" aria-hidden="true"></span>Hôtels à <strong>Pézenas</strong></a>
-      <a href="https://www.google.com/maps/search/h%C3%B4tels+B%C3%A9ziers" target="_blank" rel="noopener"><span class="epingle" aria-hidden="true"></span>Hôtels à <strong>Béziers</strong></a>
+    <p class="titre-script titre-script--petit" data-revele>Et sinon…</p>
+    <p class="sinon" data-revele>Vous trouverez également des hôtels<br> à Pézenas ou à Béziers.</p>
+    <div class="hotels" data-revele>
+      <a href="https://www.google.com/maps/search/h%C3%B4tels+P%C3%A9zenas" target="_blank" rel="noopener"><img src="/img/epingle.webp" alt="" width="60" height="58" loading="lazy"><span>Hôtels à<br><strong>Pézenas</strong></span></a>
+      <a href="https://www.google.com/maps/search/h%C3%B4tels+B%C3%A9ziers" target="_blank" rel="noopener"><img src="/img/epingle.webp" alt="" width="60" height="58" loading="lazy"><span>Hôtels à<br><strong>Béziers</strong></span></a>
     </div>
   </div>
+  <img class="coin coin--bas-branche" src="/img/coin-branche.webp" alt="" width="296" height="335" loading="lazy">
+  <img class="coin coin--bas" src="/img/coin-hibiscus.webp" alt="" width="401" height="243" loading="lazy">
 </section>
 
 <!-- ============ Photo ============ -->
@@ -147,17 +157,17 @@
   <img class="reponse__fleur reponse__fleur--g" src="/img/hibiscus-lys.webp" alt="" width="500" height="363" loading="lazy">
   <img class="reponse__fleur reponse__fleur--d" src="/img/fleur-hibiscus.webp" alt="" width="500" height="402" loading="lazy">
   <div class="enveloppe enveloppe--etroite">
-    <h2 class="titre"><span class="script">Votre</span> réponse</h2>
-    <p class="chapeau">Afin de préparer au mieux cette journée, merci de nous répondre avant le <strong>17 octobre 2027</strong>, en précisant le nombre d'enfants présents.</p>
+    <h2 class="titre-script" data-revele>Votre réponse</h2>
+    <p class="chapeau" data-revele>Afin de préparer au mieux cette journée, merci de nous faire part de votre réponse et du nombre d'enfants présents avant le <strong>17 octobre 2027</strong>.</p>
 
     <form id="formulaire" class="formulaire" novalidate>
       <div class="champ">
-        <label for="noms">Vos prénoms et noms</label>
+        <label for="noms">Vos prénoms et noms <span class="requis" aria-hidden="true">*</span></label>
         <input id="noms" name="noms" type="text" autocomplete="name" required placeholder="Ex. : Marie et Paul Dupont">
       </div>
 
-      <fieldset class="champ">
-        <legend>Serez-vous des nôtres ?</legend>
+      <fieldset class="champ" id="groupe-presence">
+        <legend>Serez-vous des nôtres ? <span class="requis" aria-hidden="true">*</span></legend>
         <div class="choix">
           <label class="pastille"><input type="radio" name="presence" value="oui" required><span>Avec joie, nous serons là</span></label>
           <label class="pastille"><input type="radio" name="presence" value="non"><span>Malheureusement, nous ne pourrons pas venir</span></label>
@@ -167,17 +177,17 @@
       <div class="si-present" id="si-present" hidden>
         <div class="deux">
           <div class="champ">
-            <label for="adultes">Adultes</label>
-            <input id="adultes" name="adultes" type="number" inputmode="numeric" min="1" max="20" value="1">
+            <label for="adultes">Nombre d'adultes <span class="requis" aria-hidden="true">*</span></label>
+            <input id="adultes" name="adultes" type="number" inputmode="numeric" min="1" max="20" required placeholder="Ex. : 2">
           </div>
           <div class="champ">
-            <label for="enfants">Enfants</label>
-            <input id="enfants" name="enfants" type="number" inputmode="numeric" min="0" max="20" value="0">
+            <label for="enfants">Nombre d'enfants présents <span class="requis" aria-hidden="true">*</span></label>
+            <input id="enfants" name="enfants" type="number" inputmode="numeric" min="0" max="20" required placeholder="0 si aucun">
           </div>
         </div>
 
-        <fieldset class="champ">
-          <legend>Le brunch du dimanche, 9h00</legend>
+        <fieldset class="champ" id="groupe-brunch">
+          <legend>Le brunch du dimanche, 9h00 <span class="requis" aria-hidden="true">*</span></legend>
           <div class="choix choix--ligne">
             <label class="pastille"><input type="radio" name="brunch" value="oui"><span>Oui</span></label>
             <label class="pastille"><input type="radio" name="brunch" value="non"><span>Non</span></label>
@@ -214,26 +224,30 @@
 
       <p class="erreur" id="erreur" role="alert" hidden></p>
       <button class="bouton bouton--plein" type="submit" id="envoyer">Envoyer ma réponse</button>
+      <p class="legende-requis"><span class="requis">*</span> champs obligatoires</p>
     </form>
 
     <div class="merci" id="merci" hidden tabindex="-1">
-      <p class="script script--grand">Merci !</p>
+      <p class="titre-script">Merci !</p>
       <p id="merci-texte">Votre réponse est bien arrivée.</p>
       <button class="lien" type="button" id="modifier">Envoyer une autre réponse</button>
     </div>
 
-    <p class="sms">Vous préférez un SMS ? Écrivez-nous au <span class="numero" data-copie="0789020669">07 89 02 06 69</span>.</p>
-    <p class="delai">Passé le 17 octobre 2027, sans nouvelles de votre part, nous considérerons que vous ne pourrez malheureusement pas vous joindre à nous.</p>
+    <p class="sms">Vous préférez un SMS ? Écrivez-nous au <span class="numero">07 89 02 06 69</span>.</p>
+    <p class="delai">Passé ce délai, sans nouvelle de votre part, nous considérerons que vous ne pourrez malheureusement pas vous joindre à nous.</p>
   </div>
 </section>
 
-<footer class="pied">
-  <img class="pied__fleur" src="/img/hibiscus-demi.webp" alt="" width="400" height="227" loading="lazy">
-  <p class="capitales">À très vite !</p>
+<footer class="papier pied">
+  <img class="coin coin--pied" src="/img/coin-hibiscus.webp" alt="" width="401" height="243" loading="lazy">
+  <img class="ornement" src="/img/ornement.webp" alt="" width="159" height="39" loading="lazy">
+  <p class="capitales capitales--olive">À très vite !</p>
+  <img class="petit-coeur" src="/img/coeur.webp" alt="" width="20" height="20" loading="lazy">
   <p class="pied__monogramme">A <span>&amp;</span> JC</p>
   <p class="signature">Site réalisé par Charlotte Gerotto</p>
 </footer>
 
+<div class="fete" id="fete" aria-hidden="true"></div>
 <script src="/script.js" defer></script>
 </body>
 </html>

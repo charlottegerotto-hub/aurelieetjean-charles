@@ -1,0 +1,6 @@
+{
+  "name": "aurelieetjean-charles",
+  "private": true,
+  "description": "Site du mariage d'Aurélie et Jean-Charles, 17 juin 2028",
+  "engines": { "node": ">=18" }
+}

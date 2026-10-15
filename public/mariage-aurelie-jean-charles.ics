@@ -1,0 +1,29 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Aurelie et Jean-Charles//Mariage//FR
+CALSCALE:GREGORIAN
+BEGIN:VEVENT
+UID:ceremonie-20280617@aurelieetjean-charles
+DTSTAMP:20261015T120000Z
+DTSTART:20280617T134500Z
+DTEND:20280617T150000Z
+SUMMARY:Mariage d’Aurélie & Jean-Charles - Cérémonie
+LOCATION:Église Saint-Jean\, 2 rue des Chevaliers Saint-Jean\, 34120 Pézenas
+END:VEVENT
+BEGIN:VEVENT
+UID:soiree-20280617@aurelieetjean-charles
+DTSTAMP:20261015T120000Z
+DTSTART:20280617T163000Z
+DTEND:20280617T230000Z
+SUMMARY:Mariage d’Aurélie & Jean-Charles - Vin d’honneur et soirée
+LOCATION:Domaine de la Marceille Basse\, 34290 Servian
+END:VEVENT
+BEGIN:VEVENT
+UID:brunch-20280618@aurelieetjean-charles
+DTSTAMP:20261015T120000Z
+DTSTART:20280618T070000Z
+DTEND:20280618T100000Z
+SUMMARY:Brunch des mariés
+LOCATION:Domaine de la Marceille Basse\, 34290 Servian
+END:VEVENT
+END:VCALENDAR

@@ -31,8 +31,20 @@
   menu.querySelectorAll(".menu__liens a").forEach(function (a) { a.addEventListener("click", fermeMenu); });
   document.addEventListener("keydown", function (e) { if (e.key === "Escape") fermeMenu(); });
   document.addEventListener("click", function (e) { if (!menu.contains(e.target)) fermeMenu(); });
-  function surDefilement() { menu.classList.toggle("defile", window.scrollY > 40); }
+  // ligne de progression : part de la page déjà parcourue
+  var progression = document.getElementById("progression"), attente = false;
+  function surDefilement() {
+    menu.classList.toggle("defile", window.scrollY > 40);
+    if (attente) return;
+    attente = true;
+    requestAnimationFrame(function () {
+      var total = document.documentElement.scrollHeight - window.innerHeight;
+      progression.style.transform = "scaleX(" + (total > 0 ? Math.min(1, window.scrollY / total) : 0) + ")";
+      attente = false;
+    });
+  }
   window.addEventListener("scroll", surDefilement, { passive: true });
+  window.addEventListener("resize", surDefilement);
   surDefilement();
   // souligne la partie en cours de lecture
   if ("IntersectionObserver" in window) {
@@ -84,14 +96,17 @@
     return el ? String(el.value || "").trim() : "";
   }
 
+  // un champ corrigé perd sa marque d'erreur
+  function corrige(e) {
+    [e.target, e.target.closest(".invalide-groupe")].forEach(function (el) {
+      if (el) { el.classList.remove("invalide", "invalide-groupe"); el.removeAttribute("aria-invalid"); }
+    });
+  }
   form.addEventListener("change", function (e) {
     if (e.target.name === "presence") bloc.hidden = e.target.value !== "oui";
-    if (e.target.closest(".invalide-groupe")) e.target.closest(".invalide-groupe").classList.remove("invalide-groupe");
-    if (e.target.classList.contains("invalide")) e.target.classList.remove("invalide");
+    corrige(e);
   });
-  form.addEventListener("input", function (e) {
-    if (e.target.classList.contains("invalide")) e.target.classList.remove("invalide");
-  });
+  form.addEventListener("input", corrige);
 
   var erreurTexte = document.getElementById("erreur-texte");
   var secours = document.getElementById("secours");
@@ -102,6 +117,7 @@
     erreur.hidden = false;
     if (champ) {
       champ.classList.add(champ.tagName === "FIELDSET" ? "invalide-groupe" : "invalide");
+      champ.setAttribute("aria-invalid", "true");
       champ.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }

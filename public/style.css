@@ -5,14 +5,14 @@
   /* teintes relevées dans le PDF */
   --blanc: #fefdfe;       /* blanc exact du fond des bouquets */
   --papier: #f5f2e8;      /* page « logements » */
-  --rose: #d9346f;        /* framboise des noms et titres */
+  --rose: #cc2e67;        /* framboise des noms et titres (un ton plus soutenu que le PDF, pour la lisibilité) */
   --rose-pale: #fbe3ec;
   --sauge: #919d74;       /* monogramme AJC */
   --ombre: #d4d4d1;       /* doublure grise du monogramme */
-  --olive: #867130;       /* texte doré-olive des pages 1 et 2 */
+  --olive: #7f6b2d;       /* texte doré-olive des pages 1 et 2 */
   --olive-fonce: #54593d; /* texte de la page logements */
   --encre: #4d4a3c;
-  --encre-douce: #7d7867;
+  --encre-douce: #736e5d;
   --filet: #e7dfcf;
 
   --f-didone: "Bodoni Moda", "Didot", "Bodoni 72", Georgia, serif;
@@ -141,6 +141,16 @@ section, .hero, .pied { position: relative; }
   cursor: copy;
 }
 
+/* ---------- lien d'évitement et ligne de progression ---------- */
+.evitement { position: fixed; left: var(--g); top: -4rem; z-index: 50; background: var(--rose); color: var(--blanc); padding: .6rem 1rem; border-radius: 6px; font-size: var(--t-petit); }
+.evitement:focus { top: calc(.6rem + env(safe-area-inset-top, 0px)); }
+.progression { position: fixed; left: 0; right: 0; top: env(safe-area-inset-top, 0px); height: 4px; z-index: 26; pointer-events: none; }
+.progression span {
+  display: block; height: 100%; transform: scaleX(0); transform-origin: 0 50%;
+  background: linear-gradient(90deg, var(--sauge), var(--rose));
+  border-radius: 0 3px 3px 0;
+}
+
 /* ---------- menu ---------- */
 .menu {
   position: fixed; top: 0; left: 0; right: 0; z-index: 25;
@@ -226,7 +236,7 @@ section, .hero, .pied { position: relative; }
   background: linear-gradient(90deg, transparent, var(--blanc) 12%, var(--blanc) 88%, transparent);
 }
 .invitation { margin-top: 2.2rem; max-width: 21rem; font-size: var(--t-accent); color: var(--olive); line-height: 1.4; }
-.grande-date { color: var(--sauge); font-size: calc(var(--t-titre) * .92); margin-top: 1rem; line-height: 1; font-variant-numeric: lining-nums; }
+.grande-date { color: #848f66; font-size: calc(var(--t-titre) * .92); margin-top: 1rem; line-height: 1; font-variant-numeric: lining-nums; }
 .sous-date { margin-top: 1rem; text-transform: uppercase; letter-spacing: .2em; font-size: var(--t-etiquette); color: var(--olive); }
 
 .compte { display: flex; margin: 2.2rem 0 2.4rem; justify-content: center; }
@@ -366,7 +376,7 @@ section, .hero, .pied { position: relative; }
   display: flex; flex-direction: column; align-items: center; gap: .3rem; text-align: center; color: var(--blanc);
   text-shadow: 0 2px 18px rgba(0,0,0,.35);
 }
-.photo-course__legende .script { font-size: var(--t-titre); }
+.photo-course__legende .script { font-size: calc(var(--t-titre) * .85); padding: 0 var(--d) 0 var(--g); }
 .photo-course__legende .capitales { font-size: var(--t-etiquette); letter-spacing: .4em; margin-right: -.4em; }
 
 /* ---------- réponse ---------- */
@@ -403,7 +413,7 @@ section, .hero, .pied { position: relative; }
   background: var(--blanc); border: 1px solid var(--filet); border-radius: 6px;
   transition: border-color .2s, box-shadow .2s;
 }
-.formulaire input::placeholder, .formulaire textarea::placeholder { color: #b3ab9b; font-style: italic; }
+.formulaire input::placeholder, .formulaire textarea::placeholder { color: #8f8775; font-style: italic; }
 .formulaire input:focus, .formulaire textarea:focus { outline: none; border-color: var(--rose); box-shadow: 0 0 0 3px var(--rose-pale); }
 .formulaire textarea { resize: vertical; min-height: 6rem; }
 .formulaire .invalide { border-color: var(--rose) !important; animation: secoue .4s; }
@@ -451,7 +461,7 @@ section, .hero, .pied { position: relative; }
 .ornement { width: 7.5rem; position: relative; }
 .petit-coeur { width: .9rem; }
 .pied__monogramme { color: var(--sauge); font-size: var(--t-accent); letter-spacing: .1em; margin-top: .4rem; text-shadow: .04em .03em 0 var(--ombre); }
-.signature { margin-top: 2.2rem; font-size: .7rem; letter-spacing: .06em; color: #b5ad9c; }
+.signature { margin-top: 2.2rem; font-size: .7rem; letter-spacing: .06em; color: #7a7464; }
 .signature a { color: inherit; text-decoration: underline; text-decoration-color: rgba(181, 173, 156, .5); text-underline-offset: 2px; transition: color .25s; }
 .signature a:hover { color: var(--rose); }
 

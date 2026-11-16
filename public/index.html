@@ -19,6 +19,9 @@
 <body>
 
 <!-- ============ Menu ============ -->
+<a class="evitement" href="#essentiel">Aller à l'essentiel</a>
+<div class="progression" aria-hidden="true"><span id="progression"></span></div>
+
 <nav class="menu" id="menu" aria-label="Sommaire">
   <a class="menu__logo" href="#haut" aria-label="Haut de page">A <span>&amp;</span> JC</a>
   <button class="menu__bouton" id="menu-bouton" type="button" aria-expanded="false" aria-controls="menu-liens"><span class="menu__traits" aria-hidden="true"></span>Menu</button>
@@ -43,7 +46,7 @@
     <p class="grande-date">17/06/2028</p>
     <p class="sous-date">Samedi 17 juin 2028 · Pézenas &amp; Servian</p>
 
-    <div class="compte" aria-label="Temps restant avant la cérémonie">
+    <div class="compte" role="group" aria-label="Temps restant avant la cérémonie">
       <div><strong id="cj">–</strong><span>jours</span></div>
       <div><strong id="ch">–</strong><span>heures</span></div>
       <div><strong id="cm">–</strong><span>minutes</span></div>
@@ -52,6 +55,8 @@
     <a class="bouton" href="#reponse">Répondre à l'invitation</a>
   </div>
 </header>
+
+<main id="contenu">
 
 <!-- ============ L'essentiel, en un coup d'œil ============ -->
 <section class="papier essentiel" id="essentiel">
@@ -310,6 +315,8 @@
     <p class="delai">Passé ce délai, sans nouvelle de votre part, nous considérerons que vous ne pourrez malheureusement pas vous joindre à nous.</p>
   </div>
 </section>
+
+</main>
 
 <footer class="papier pied">
   <img class="coin coin--pied" src="/img/coin-hibiscus.webp" alt="" width="401" height="243" loading="lazy">

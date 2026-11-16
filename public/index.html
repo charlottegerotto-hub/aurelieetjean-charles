@@ -25,7 +25,6 @@
   <ul class="menu__liens" id="menu-liens">
     <li><a href="#essentiel">L'essentiel</a></li>
     <li><a href="#programme">Programme</a></li>
-    <li><a href="#brunch">Brunch</a></li>
     <li><a href="#logements">Logements</a></li>
     <li><a href="#reponse" class="menu__repondre">Répondre</a></li>
   </ul>
@@ -65,7 +64,7 @@
       <li class="tuile" data-revele>
         <img class="tuile__ill" src="/img/ill-eglise.webp" alt="" width="500" height="410" loading="lazy">
         <div class="tuile__texte">
-          <p class="tuile__quand">Samedi 17 juin · 15h45</p>
+          <p class="tuile__quand">Samedi 17 juin · 15h40</p>
           <h3>Cérémonie</h3>
           <p class="tuile__ou">Église Saint-Jean, Pézenas</p>
           <a class="lien" href="https://www.google.com/maps/search/?api=1&amp;query=%C3%89glise+Saint-Jean%2C+2+Rue+des+Chevaliers+Saint-Jean%2C+34120+P%C3%A9zenas" target="_blank" rel="noopener">Itinéraire</a>
@@ -80,26 +79,17 @@
           <a class="lien" href="https://www.google.com/maps/search/?api=1&amp;query=Domaine+de+la+Marceille+Basse%2C+34290+Servian" target="_blank" rel="noopener">Itinéraire</a>
         </div>
       </li>
-      <li class="tuile" data-revele>
-        <img class="tuile__ill" src="/img/ill-brunch.webp" alt="" width="500" height="499" loading="lazy">
-        <div class="tuile__texte">
-          <p class="tuile__quand">Dimanche 18 juin · 9h00</p>
-          <h3>Brunch</h3>
-          <p class="tuile__ou">Pour prolonger la fête ensemble</p>
-          <a class="lien" href="#brunch">En savoir plus</a>
-        </div>
-      </li>
       <li class="tuile tuile--rsvp" data-revele>
         <span class="tuile__ill tuile__ill--coeur" aria-hidden="true">♥</span>
         <div class="tuile__texte">
           <p class="tuile__quand">Avant le 17 octobre 2027</p>
           <h3>Votre réponse</h3>
-          <p class="tuile__ou">Présence, nombre d'enfants, brunch</p>
+          <p class="tuile__ou">Présence et nombre d'enfants</p>
           <a class="bouton bouton--petit" href="#reponse">Répondre</a>
         </div>
       </li>
     </ul>
-    <p class="essentiel__plus" data-revele><span>Logements sur place, de 100 à 120 € la nuit</span> <a class="lien" href="#logements">Voir les logements</a></p>
+    <p class="essentiel__plus" data-revele><span>Gîtes, dortoir et villa sur place, du vendredi au dimanche</span> <a class="lien" href="#logements">Voir les logements</a></p>
   </div>
 </section>
 
@@ -125,7 +115,7 @@
       <li class="etape" data-revele>
         <img class="etape__ill" src="/img/ill-eglise.webp" alt="" width="500" height="410" loading="lazy">
         <div class="etape__texte">
-          <h3 class="heure">15h45 <span class="tiret">-</span> Église Saint-Jean</h3>
+          <h3 class="heure">15h40 <span class="tiret">-</span> Église Saint-Jean</h3>
           <p class="lieu">Cérémonie religieuse</p>
           <p class="adresse">2 rue des Chevaliers Saint-Jean, 34120 Pézenas</p>
           <a class="lien" href="https://www.google.com/maps/search/?api=1&amp;query=%C3%89glise+Saint-Jean%2C+2+Rue+des+Chevaliers+Saint-Jean%2C+34120+P%C3%A9zenas" target="_blank" rel="noopener">Itinéraire</a>
@@ -149,18 +139,6 @@
   </div>
 </section>
 
-<!-- ============ Page 3 : le brunch ============ -->
-<section class="brunch" id="brunch">
-  <img class="brunch__bouquet" src="/img/fleurs-brunch.webp" alt="" width="1536" height="857" loading="lazy">
-  <div class="enveloppe">
-    <h2 class="brunch__titre" data-revele>Brunch</h2>
-    <p class="capitales" data-revele>Dimanche 18 juin · 9h00</p>
-    <img class="brunch__ill" src="/img/ill-brunch.webp" alt="Café, œuf au plat et croissant" width="500" height="499" loading="lazy" data-revele>
-    <p data-revele>Le dimanche matin, nous nous retrouverons pour un brunch convivial à 9h00.</p>
-    <p data-revele>Merci de nous confirmer votre présence également.</p>
-  </div>
-</section>
-
 <!-- ============ Page 4 : les logements ============ -->
 <section class="papier logements" id="logements">
   <img class="coin coin--haut" src="/img/roses.webp" alt="" width="600" height="459" loading="lazy">
@@ -170,35 +148,52 @@
     <p class="chapeau-caps" data-revele>Pour profiter pleinement<br> du week-end de mariage</p>
     <img class="filet" src="/img/filet-coeur.webp" alt="" width="356" height="39" loading="lazy">
 
-    <ul class="offres">
-      <li class="offre" data-revele>
-        <img class="offre__icone" src="/img/ic-lit.webp" alt="" width="119" height="97" loading="lazy">
-        <h3>11 chambres</h3>
-        <img class="arabesque" src="/img/arabesque.webp" alt="" width="119" height="39" loading="lazy">
-        <p class="prix">120 €</p>
-        <p class="detail">La chambre<br>plus taxe de séjour</p>
-        <img class="brin" src="/img/brin.webp" alt="" width="80" height="77" loading="lazy">
+    <ul class="gites">
+      <li class="gite" data-revele>
+        <img class="gite__icone" src="/img/ic-lit.webp" alt="" loading="lazy">
+        <h3 class="gite__nom">Gîte La Lavande</h3>
+        <p class="gite__capacite">3 chambres · 6 pers.</p>
+        <dl class="gite__nuits"><div><dt>Vendredi</dt><dd>190 €<span>le gîte</span></dd></div><div><dt>Samedi</dt><dd>120 €<span>la chambre</span></dd></div><div><dt>Dimanche</dt><dd>190 €<span>le gîte</span></dd></div></dl>
       </li>
-      <li class="offre" data-revele>
-        <img class="offre__icone" src="/img/ic-dortoir.webp" alt="" width="120" height="97" loading="lazy">
-        <h3>Dortoir<br>de 4 lits</h3>
-        <img class="arabesque" src="/img/arabesque.webp" alt="" width="119" height="39" loading="lazy">
-        <p class="prix">100 €</p>
-        <p class="detail">Le lit<br>plus taxe de séjour</p>
-        <img class="brin" src="/img/brin.webp" alt="" width="80" height="77" loading="lazy">
+      <li class="gite" data-revele>
+        <img class="gite__icone" src="/img/ic-lit.webp" alt="" loading="lazy">
+        <h3 class="gite__nom">Gîte L'Olivier</h3>
+        <p class="gite__capacite">2 chambres · 4 pers.</p>
+        <dl class="gite__nuits"><div><dt>Vendredi</dt><dd>180 €<span>le gîte</span></dd></div><div><dt>Samedi</dt><dd>120 €<span>la chambre</span></dd></div><div><dt>Dimanche</dt><dd>190 €<span>le gîte</span></dd></div></dl>
       </li>
-      <li class="offre" data-revele>
-        <img class="offre__icone" src="/img/ic-villa.webp" alt="" width="159" height="116" loading="lazy">
-        <h3>Villa + loft<br>5 chambres</h3>
-        <img class="arabesque" src="/img/arabesque.webp" alt="" width="119" height="39" loading="lazy">
-        <p class="prix">120 €</p>
-        <p class="detail">La chambre<br>plus taxe de séjour</p>
-        <img class="brin" src="/img/brin.webp" alt="" width="80" height="77" loading="lazy">
+      <li class="gite" data-revele>
+        <img class="gite__icone" src="/img/ic-lit.webp" alt="" loading="lazy">
+        <h3 class="gite__nom">Gîte Le Tilleul</h3>
+        <p class="gite__capacite">3 chambres · 6 pers.</p>
+        <dl class="gite__nuits"><div><dt>Vendredi</dt><dd>230 €<span>le gîte</span></dd></div><div><dt>Samedi</dt><dd>120 €<span>la chambre</span></dd></div><div><dt>Dimanche</dt><dd>230 €<span>le gîte</span></dd></div></dl>
+      </li>
+      <li class="gite" data-revele>
+        <img class="gite__icone" src="/img/ic-lit.webp" alt="" loading="lazy">
+        <h3 class="gite__nom">Gîte Le Romarin</h3>
+        <p class="gite__capacite">1 chambre · 2 pers.</p>
+        <dl class="gite__nuits"><div><dt>Vendredi</dt><dd>120 €<span>le gîte</span></dd></div><div><dt>Samedi</dt><dd>120 €<span>la chambre</span></dd></div><div><dt>Dimanche</dt><dd>120 €<span>le gîte</span></dd></div></dl>
+      </li>
+      <li class="gite" data-revele>
+        <img class="gite__icone" src="/img/ic-lit.webp" alt="" loading="lazy">
+        <h3 class="gite__nom">Gîte Le Chêne</h3>
+        <p class="gite__capacite">1 chambre · 2 pers.</p>
+        <dl class="gite__nuits"><div><dt>Vendredi</dt><dd>120 €<span>le gîte</span></dd></div><div><dt>Samedi</dt><dd>120 €<span>la chambre</span></dd></div><div><dt>Dimanche</dt><dd>120 €<span>le gîte</span></dd></div></dl>
+      </li>
+      <li class="gite" data-revele>
+        <img class="gite__icone" src="/img/ic-dortoir.webp" alt="" loading="lazy">
+        <h3 class="gite__nom">Le Dortoir</h3>
+        <p class="gite__capacite">4 lits de 2 · 8 pers.</p>
+        <dl class="gite__nuits"><div><dt>Vendredi</dt><dd>230 €<span>les 4 lits</span></dd></div><div><dt>Samedi</dt><dd>100 €<span>le lit</span></dd></div><div><dt>Dimanche</dt><dd>230 €<span>les 4 lits</span></dd></div></dl>
+      </li>
+      <li class="gite" data-revele>
+        <img class="gite__icone" src="/img/ic-villa.webp" alt="" loading="lazy">
+        <h3 class="gite__nom">Villa + Loft</h3>
+        <p class="gite__capacite">5 chambres · 10 pers. · à 5 min en voiture</p>
+        <dl class="gite__nuits"><div><dt>Vendredi</dt><dd>700 €</dd></div><div><dt>Samedi</dt><dd>600 €</dd></div><div><dt>Dimanche</dt><dd>700 €</dd></div></dl>
       </li>
     </ul>
 
-    <p class="note" data-revele>Tarif pour la nuit du mariage uniquement. Au-delà, le tarif de la saison est appliqué.</p>
-    <p class="reservation" data-revele>Réservation au <span class="numero">06 19 12 59 86</span></p>
+    <p class="reservation" data-revele>Réservations et informations auprès de Nathalie Descol<br><span class="numero">06 19 12 59 86</span></p>
 
     <p class="titre-script titre-script--petit" data-revele>Et sinon…</p>
     <p class="sinon" data-revele>Vous trouverez également des hôtels<br> à Pézenas ou à Béziers.</p>
@@ -254,18 +249,10 @@
           </div>
         </div>
 
-        <fieldset class="champ" id="groupe-brunch">
-          <legend>Le brunch du dimanche, 9h00 <span class="requis" aria-hidden="true">*</span></legend>
-          <div class="choix choix--ligne">
-            <label class="pastille"><input type="radio" name="brunch" value="oui"><span>Oui</span></label>
-            <label class="pastille"><input type="radio" name="brunch" value="non"><span>Non</span></label>
-          </div>
-        </fieldset>
-
         <fieldset class="champ">
           <legend>Où dormirez-vous ?</legend>
           <div class="choix">
-            <label class="pastille"><input type="radio" name="logement" value="domaine"><span>Au domaine (je réserve au 06 19 12 59 86)</span></label>
+            <label class="pastille"><input type="radio" name="logement" value="domaine"><span>Sur place (gîte, dortoir ou villa)</span></label>
             <label class="pastille"><input type="radio" name="logement" value="ailleurs"><span>Ailleurs (hôtel, famille…)</span></label>
             <label class="pastille"><input type="radio" name="logement" value="indecis"><span>Je ne sais pas encore</span></label>
           </div>

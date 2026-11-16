@@ -1,6 +1,6 @@
 # Aurélie & Jean-Charles — 17 juin 2028
 
-Site du mariage : programme, brunch, logements et formulaire de réponse.
+Site du mariage : programme, logements et formulaire de réponse.
 Mobile d'abord, couleurs et fleurs reprises du faire-part.
 Site statique (dossier `public/`), aucun serveur.
 
@@ -12,7 +12,7 @@ Site statique (dossier `public/`), aucun serveur.
 
 ## Réponses des invités
 
-Chaque réponse du formulaire (noms, présence, adultes, nombre d'enfants présents — obligatoire —, brunch, logement…) est envoyée
+Chaque réponse du formulaire (noms, présence, adultes, nombre d'enfants présents — obligatoire —, logement…) est envoyée
 via le service gratuit FormSubmit (formsubmit.co). Adresse réglée dans `public/script.js` (`ENVOI`).
 
 Le site tente d'abord un envoi en arrière-plan ; s'il est refusé ou bloqué, il bascule sur un envoi

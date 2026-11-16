@@ -2,7 +2,7 @@
   "use strict";
 
   // ---------- compte à rebours jusqu'à la cérémonie ----------
-  var ceremonie = new Date("2028-06-17T15:45:00+02:00").getTime();
+  var ceremonie = new Date("2028-06-17T15:40:00+02:00").getTime();
   var cj = document.getElementById("cj"), ch = document.getElementById("ch"), cm = document.getElementById("cm");
   function tic() {
     var reste = Math.max(0, ceremonie - Date.now());
@@ -143,7 +143,6 @@
       presence: valeur("presence"),
       adultes: valeur("adultes"),
       enfants: valeur("enfants"),
-      brunch: valeur("brunch"),
       logement: valeur("logement"),
       regime: valeur("regime"),
       telephone: valeur("telephone"),
@@ -158,9 +157,8 @@
       if (!(a >= 1 && a <= 20)) return montreErreur("Indiquez le nombre d'adultes (entre 1 et 20).", form.elements.adultes);
       if (donnees.enfants === "") return montreErreur("Indiquez le nombre d'enfants présents (0 s'il n'y en a pas).", form.elements.enfants);
       if (!(en >= 0 && en <= 20)) return montreErreur("Le nombre d'enfants doit être compris entre 0 et 20.", form.elements.enfants);
-      if (!donnees.brunch) return montreErreur("Dites-nous si vous viendrez au brunch du dimanche.", document.getElementById("groupe-brunch"));
     } else {
-      donnees.adultes = "0"; donnees.enfants = "0"; donnees.brunch = ""; donnees.logement = ""; donnees.regime = "";
+      donnees.adultes = "0"; donnees.enfants = "0"; donnees.logement = ""; donnees.regime = "";
     }
 
     // un robot a rempli le champ invisible : on fait semblant d'avoir envoyé
@@ -170,7 +168,7 @@
     bouton.textContent = "Envoi en cours…";
 
     var oui = donnees.presence === "oui";
-    var logements = { domaine: "Au domaine", ailleurs: "Ailleurs", indecis: "Ne sait pas encore" };
+    var logements = { domaine: "Sur place", ailleurs: "Ailleurs", indecis: "Ne sait pas encore" };
     var courriel = {
       _subject: "Réponse mariage : " + (oui ? "OUI" : "NON") + " - " + donnees.noms,
       _template: "table",
@@ -179,7 +177,6 @@
       "Présence": oui ? "Oui" : "Non",
       "Adultes": oui ? donnees.adultes : "0",
       "Enfants présents": oui ? donnees.enfants : "0",
-      "Brunch du dimanche": oui ? (donnees.brunch === "oui" ? "Oui" : "Non") : "-",
       "Logement": oui ? (logements[donnees.logement] || "Non précisé") : "-",
       "Allergies / régime": donnees.regime || "-",
       "Téléphone": donnees.telephone || "-",

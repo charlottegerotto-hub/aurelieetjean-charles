@@ -300,19 +300,33 @@ section, .hero, .pied { position: relative; }
 .logements__resume { font-size: var(--t-texte); line-height: 1.7; }
 .tarifs { margin-top: 1.8rem; }
 .tarifs summary {
-  display: inline-flex; align-items: center; gap: .7rem; cursor: pointer; list-style: none;
-  font-size: var(--t-etiquette); text-transform: uppercase; letter-spacing: .22em; color: var(--rose);
-  border: 1px solid var(--rose); border-radius: 999px; padding: .75em 1.5em; background: rgba(254, 253, 254, .7);
-  transition: background .3s, color .3s;
+  display: flex; flex-direction: column; align-items: center; gap: .8rem; cursor: pointer; list-style: none;
+  max-width: 22rem; margin: 0 auto; padding: 1.3rem 1rem 1.1rem;
+  background: rgba(254, 253, 254, .85); border: 1px solid #efc3d3; border-radius: 14px;
+  box-shadow: 0 18px 36px -24px rgba(217, 52, 111, .55); transition: transform .3s, box-shadow .3s;
 }
 .tarifs summary::-webkit-details-marker { display: none; }
-.tarifs summary:hover { background: var(--rose); color: var(--blanc); }
-.tarifs__plus { position: relative; width: 11px; height: 11px; }
-.tarifs__plus::before, .tarifs__plus::after { content: ""; position: absolute; left: 0; top: 5px; width: 11px; height: 1px; background: currentColor; transition: transform .3s; }
+.tarifs summary:hover { transform: translateY(-3px); box-shadow: 0 24px 40px -22px rgba(217, 52, 111, .6); }
+.tarifs__icones { display: flex; align-items: flex-end; gap: 1.1rem; }
+.tarifs__icones img { height: 2.3rem; width: auto; }
+.tarifs__bouton {
+  position: relative; overflow: hidden; display: inline-flex; align-items: center; gap: .8rem;
+  font-size: var(--t-petit); text-transform: uppercase; letter-spacing: .2em; color: var(--blanc);
+  background: var(--rose); border-radius: 999px; padding: .95em 1.8em; box-shadow: 0 10px 22px -12px var(--rose);
+}
+.tarifs__bouton::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-120%);
+  background: linear-gradient(110deg, transparent 30%, rgba(255,255,255,.5) 50%, transparent 70%);
+}
+.tarifs__aide { font-family: var(--f-texte); font-style: italic; font-size: var(--t-italique); color: var(--olive-fonce); }
+.tarifs__plus { position: relative; width: 13px; height: 13px; flex: none; }
+.tarifs__plus::before, .tarifs__plus::after { content: ""; position: absolute; left: 0; top: 6px; width: 13px; height: 2px; border-radius: 1px; background: currentColor; transition: transform .3s; }
 .tarifs__plus::after { transform: rotate(90deg); }
 .tarifs[open] .tarifs__plus::after { transform: rotate(0deg); }
-.tarifs__fermer, .tarifs[open] .tarifs__ouvrir { display: none; }
+.tarifs__fermer, .tarifs[open] .tarifs__ouvrir, .tarifs[open] .tarifs__icones, .tarifs[open] .tarifs__aide { display: none; }
 .tarifs[open] .tarifs__fermer { display: inline; }
+.tarifs[open] summary { background: none; border-color: transparent; box-shadow: none; padding: 0; transform: none; }
+.tarifs[open] .tarifs__bouton { background: none; color: var(--rose); border: 1px solid var(--rose); box-shadow: none; }
 .tarifs[open] .gites { animation: deplie .5s cubic-bezier(.2,.7,.2,1); }
 @keyframes deplie { from { opacity: 0; transform: translateY(-8px); } }
 .gites { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; gap: 1rem; text-align: center; }
@@ -481,6 +495,8 @@ section, .hero, .pied { position: relative; }
   .a-reveler { opacity: 0; transform: translateY(24px); transition: opacity .9s ease, transform .9s cubic-bezier(.2,.7,.2,1); }
   .a-reveler.revele { opacity: 1; transform: none; }
   .petit-coeur, .lien-etapes span { animation: pulse 1.6s ease-in-out infinite; }
+  .tarifs:not([open]) .tarifs__bouton::after { animation: reflet 3.5s ease-in-out 1s infinite; }
+  @keyframes reflet { 0%, 55% { transform: translateX(-120%); } 85%, 100% { transform: translateX(120%); } }
   @keyframes pulse { 50% { transform: scale(1.3); } }
 }
 @media (prefers-reduced-motion: reduce) {

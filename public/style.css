@@ -297,7 +297,25 @@ section, .hero, .pied { position: relative; }
 .coin--haut { top: .6rem; left: -2.4rem; width: 8.5rem; transform: rotate(160deg); }
 .coin--bas { right: -2.4rem; bottom: -.6rem; width: 11rem; }
 .coin--bas-branche { right: 3.5rem; bottom: -1.6rem; width: 6.5rem; transform: rotate(-35deg); }
-.gites { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; }
+.logements__resume { font-size: var(--t-texte); line-height: 1.7; }
+.tarifs { margin-top: 1.8rem; }
+.tarifs summary {
+  display: inline-flex; align-items: center; gap: .7rem; cursor: pointer; list-style: none;
+  font-size: var(--t-etiquette); text-transform: uppercase; letter-spacing: .22em; color: var(--rose);
+  border: 1px solid var(--rose); border-radius: 999px; padding: .75em 1.5em; background: rgba(254, 253, 254, .7);
+  transition: background .3s, color .3s;
+}
+.tarifs summary::-webkit-details-marker { display: none; }
+.tarifs summary:hover { background: var(--rose); color: var(--blanc); }
+.tarifs__plus { position: relative; width: 11px; height: 11px; }
+.tarifs__plus::before, .tarifs__plus::after { content: ""; position: absolute; left: 0; top: 5px; width: 11px; height: 1px; background: currentColor; transition: transform .3s; }
+.tarifs__plus::after { transform: rotate(90deg); }
+.tarifs[open] .tarifs__plus::after { transform: rotate(0deg); }
+.tarifs__fermer, .tarifs[open] .tarifs__ouvrir { display: none; }
+.tarifs[open] .tarifs__fermer { display: inline; }
+.tarifs[open] .gites { animation: deplie .5s cubic-bezier(.2,.7,.2,1); }
+@keyframes deplie { from { opacity: 0; transform: translateY(-8px); } }
+.gites { list-style: none; padding: 0; margin: 1.6rem 0 0; display: grid; gap: 1rem; text-align: center; }
 .gite {
   display: flex; flex-direction: column; align-items: center; gap: .15rem;
   padding: 1.2rem 1rem 1.1rem; background: rgba(254, 253, 254, .78);
@@ -312,7 +330,7 @@ section, .hero, .pied { position: relative; }
 .gite__nuits dt { font-family: var(--f-script); color: var(--rose); font-size: 1.35rem; line-height: 1.3; }
 .gite__nuits dd { margin: 0; display: flex; flex-direction: column; align-items: center; color: var(--rose); font-size: var(--t-accent); font-variant-numeric: lining-nums; line-height: 1.2; }
 .gite__nuits dd span { color: var(--olive-fonce); font-size: var(--t-etiquette); text-transform: uppercase; letter-spacing: .12em; line-height: 1.6; }
-.reservation { margin-top: 2rem; font-size: var(--t-petit); text-transform: uppercase; letter-spacing: .14em; line-height: 1.9; }
+.reservation { margin-top: 1.2rem; font-size: var(--t-petit); text-transform: uppercase; letter-spacing: .14em; line-height: 1.9; }
 .reservation .numero { font-size: var(--t-texte); }
 .sinon { font-size: var(--t-texte); }
 .hotels { display: flex; justify-content: center; gap: 2.4rem; margin-top: 1.6rem; }
